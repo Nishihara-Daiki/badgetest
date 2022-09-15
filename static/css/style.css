@@ -21,6 +21,10 @@ th {
 	background-color: #ccc;
 }
 
+.deleted td {
+	background-color: #f88;
+}
+
 .detail td {
 	padding-top: 0;
 	border: none;
