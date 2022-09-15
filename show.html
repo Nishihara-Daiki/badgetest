@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 <body>
-    <h2>バッジテスト一覧</h2>
-    <p>バッジテストの一覧を表示します。</p>
-    <a href="/list">一覧</a>
+    <table id="main">
+        <tr><th>都道府県</th><th>区分</th><th>テスト日</th><th>テスト時間</th><th>場所</th></tr>
+        {{table_contents}}
+    </table>
 </body>
 </html>

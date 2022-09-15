@@ -8,9 +8,14 @@ app = Flask(__name__, template_folder='.')
 
 @app.route('/')
 def root():
+    return render_template('index.html')
+
+
+@app.route('/list')
+def show():
     results = get_requests()
     table_contents = Markup(get_table_contents(results))
-    return render_template("index.html", table_contents=table_contents)
+    return render_template("show.html", table_contents=table_contents)
 
 
 @app.route('/source')
