@@ -2,7 +2,6 @@ import json
 import re
 import requests
 from flask import Flask, Markup, render_template
-from typing import List
 
 app = Flask(__name__, template_folder='.')
 
@@ -27,13 +26,13 @@ def get_requests():
     BASE_URL = 'http://203.137.92.236/appwebapi/src/getFsbtInformation.php?appName=JSF%20FS%20Info'
     queue = [range(1, 3), range(3, 6), range(6, 14), range(14, 18), range(18, 24), range(24, 30), range(30, 40), range(40, 48)]
     results = []
-    for ids in queue:
+    for i, ids in enumerate(queue):
         pref_numbers = ','.join(map(str, ids))
         url = f'{BASE_URL}&pref={pref_numbers}'
         res = requests.post(url=url)
         info = res.json()['information']
-        print(len(info))
-        if len(info) >= 30:
+        print(ids, len(info))
+        if len(info) >= 30 and len(ids) > 1:
             mid = len(ids) // 2
             queue.append(ids[:mid])
             queue.append(ids[mid:])
@@ -41,6 +40,9 @@ def get_requests():
             for item in info:
                 if 'informationID' in item and item['informationID'] is not None:
                     results.append(item)
+        if i > 100:
+            print('loop limit')
+            break
     print('results = ', len(results))
     return results
 
