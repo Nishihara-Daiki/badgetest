@@ -23,7 +23,7 @@ def source():
 
 
 def get_requests():
-    BASE_URL = 'http://203.137.92.236/appwebapi/src/getFsbtInformation.php?appName=JSF%20FS%20Info'
+    BASE_URL = 'http://skatinginfo.jsfinfo.jp/appwebapi/src/getFsbtInformation.php?appName=JSF%20FS%20Info'
     queue = [range(1, 3), range(3, 6), range(6, 14), range(14, 18), range(18, 24), range(24, 30), range(30, 40), range(40, 48)]
     results = []
     for i, ids in enumerate(queue):
